@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <h2>Добро пожаловать!</h2>
+    <p>Это страница посвящена разработке платформы ITMM Academy</p>
+
+    <h3>Последние новости:</h3>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h4>{{ article.title }}</h4>
+                <p>{{ article.content|truncatewords:30 }}</p>
+                <small>Опубликовано: {{ article.pub_date }}</small>
+            </li>
+        {% empty %}
+            <li>Нет доступных статей.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
