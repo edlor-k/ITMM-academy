@@ -3,19 +3,16 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    <h2>Добро пожаловать!</h2>
-    <p>Это страница посвящена разработке платформы ITMM Academy</p>
-
-    <h3>Последние новости:</h3>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <h4>{{ article.title }}</h4>
-                <p>{{ article.content|truncatewords:30 }}</p>
-                <small>Опубликовано: {{ article.pub_date }}</small>
-            </li>
-        {% empty %}
-            <li>Нет доступных статей.</li>
-        {% endfor %}
-    </ul>
+   <h2>Список статей</h2>
+   <div class="list-group">
+       {% for article in articles %}
+           <a href="#" class="list-group-item list-group-item-action">
+               <h5 class="mb-1">{{ article.title }}</h5>
+               <p class="mb-1">{{ article.content|truncatewords:30 }}</p>
+               <small>Опубликовано: {{ article.published_date }}</small>
+           </a>
+       {% empty %}
+           <p>Нет доступных статей.</p>
+       {% endfor %}
+   </div>
 {% endblock %}
