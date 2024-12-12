@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Авторизация</title>
+  <!-- Подключение шрифтов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Подключение CSS -->
+  <link rel="stylesheet" href="{% static 'css/style-auth.css' %}" />
+</head>
+<body>
+  <div class="background-effects">
+    <img src="{% static 'img/bg-menu.png' %}" alt="Свечение" class="background-effect" />
+  </div>
+  <div class="div-container">
+    <form
+      class="login-form"
+      action="{% url 'login' %}"
+      method="post"
+      aria-labelledby="form-heading"
+    >
+      {% csrf_token %}
+      
+      <!-- Отображение ошибок формы -->
+      {% if form.non_field_errors %}
+        <div class="form-errors">
+          <ul>
+            {% for error in form.non_field_errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <!-- Заголовок -->
+      <div class="form-text">
+        <h1 id="form-heading">ITMM</h1>
+        <p>Вход в профиль</p>
+      </div>
+
+      <!-- Поля ввода -->
+<div class="form-group">
+    <div class="input-container">
+        <input class="username-input" type="text" name="username" required />
+        <span class="placeholder-text">Логин</span>
+    </div>
+    <!-- Отображение ошибок для поля username -->
+    {% if form.username.errors %}
+        <div class="field-errors">
+            <ul>
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+<div class="form-group">
+    <div class="input-container">
+        <input
+            class="password-input"
+            type="password"
+            id="password"
+            name="password"
+            required
+        />
+        <span class="placeholder-pass">Пароль</span>
+        <!-- Кнопка показа/скрытия пароля -->
+        <button type="button" class="toggle-password" id="togglePassword">🙈</button>
+    </div>
+    <!-- Отображение ошибок для поля password -->
+    {% if form.password.errors %}
+        <div class="field-errors">
+            <ul>
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+      <!-- Кнопки и ссылки -->
+      <div class="form-actions">
+        <button class="button login-button" type="submit">Войти</button>
+        <a class="forgot-password" href="#">Забыли пароль?</a>
+      </div>
+    </form>
+  </div>
+  <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Образовательная платформа</title>
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- <img src="/img/bg-menu.png" alt="Свечение"> -->
+    <div class="background-effects">
+        <img src="{% static 'img/bg-menu.png' %}" alt="Свечение" class="background-effect">
+    </div>
+    <div class="contacts">
+        
+        <!-- Контактная почта -->
+        <div class="email">
+            <a href="mailto:info@example.com">
+                <img src="{% static 'img/email.svg' %}" alt="Почта">
+            </a>
+            <p>itmm-education@gmail.com</p>
+        </div>
+        <!-- Социальные иконки -->
+        <div class="social-icons">
+            <a href="https://telegram.org/" target="_blank">
+                <img src="{% static 'img/tg.svg' %}" alt="Телеграмм">
+            </a>
+            <a href="https://vk.com/" target="_blank">
+                <img src="{% static 'img/vk.svg' %}" alt="ВКонтакте">
+            </a>
+            <a href="https://youtube.com/" target="_blank">
+                <img src="{% static 'img/yt.svg' %}" alt="Ютуб">
+            </a>
+        </div>
+    </div>
+    <header>
+
+        <div class="menu">
+            <!-- Навигационная панель -->
+            <nav>
+                <ul class="nav-bar">
+                    <li><a href="#sponsors">СПОНСОРЫ</a></li>
+                    <li><a href="#about">О ПРОЕКТЕ</a></li>
+                    <li><a href="#services">КУРСЫ</a></li>
+                    <li class="logo no-hover"><a href="#logo">ITMM</a></li>
+                    <li><a href="#contact">УЧАСТНИКИ</a></li>
+                    <li><a href="#index">ТОКЕНЫ</a></li>
+                    <li>
+                        {% if request.user.is_authenticated %}
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <a href="#" onclick="this.closest('form').submit();" style="">
+                                    ВЫЙТИ
+                                </a>
+                            </form>
+                        {% else %}
+                            <a href="{% url 'login' %}">ВОЙТИ</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="main__title"> 
+            <div class="row">
+                <div>
+                    <h1 class="title-one">ИИТММ</h1>
+                <a>
+                    Начать <img src="{% static 'img/arrow.svg' %}" alt="Стрелочка">
+                </a> 
+                </div>
+                    <img class="token" src="{% static 'img/token.svg' %}" alt="токен">
+            </div>
+            <h2 class="title-two">EDUCATION</h2>
+        </section>
+        <section class="sponsors" id="sponsors">
+            <h2 class="title_sponsors">СПОНСОРЫ</h2>
+            <div class="first-sponsor">
+                <div class="it-name">
+                    <p class="it-company">IT-компания</p>
+                    <h3 class="it-company-name"><a href="https://lad24.ru/" target="_blank">Lad</a></h3>
+                </div>
+                <div class="mirror">
+                    <img class="mirror-image" src="{% static 'img/noise_rect.png' %}" alt="noise">
+                    <p>Группа IT-компаний Lad предлагает комплексную экспертизу в
+                        области системной интеграции, разработке ПО и продуктов на базе AI-технологий.</p>
+                </div>
+                <div class="icon">
+                    <img src="{% static 'img/icon_touch.svg' %}" alt="Иконка">
+                    <img src="{% static 'img/icon_touch.svg' %}" alt="Иконка">
+                </div>
+                <div class="blue-rectangle">
+                    <img src="{% static 'img/lad-sponsor.png' %}" alt="">
+                </div>
+            </div>
+            <div class="second-sponsor2">
+                <div class="blue-rectangle2">
+                    <img src="{% static 'img/cryptonit.png' %}" alt="">
+                </div>
+                <div class="it-name2">
+                    <p class="it-company2">IT-компания</p>
+                    <h3 class="it-company-name2"><a href="https://career.kryptonite.ru/" target="_blank">Криптонит</a></h3>
+                </div>
+                <div class="mirror2">
+                    <img class="mirror-image2" src="{% static 'img/noise_rect.png' %}" alt="noise">
+                    <p>В своих разработках мы применяем технологии искусственного интеллекта, такие как машинное
+                        обучение (ML), компьютерное зрение, обработка естественного языка (NLP). </p>
+                </div>
+                <div class="icon2">
+                    <img src="{% static 'img/icon_touch.svg' %}" alt="Иконка">
+                    <img src="{% static 'img/icon_touch.svg' %}" alt="Иконка">
+                </div>   
+            </div>
+            <img class="triangle-sponsors" src="{% static 'img/triangle-sponsors.svg' %}" alt="треугольник">
+        </section>
+        <section class="modern">
+            <h2 class="modern-title">СОВРЕМЕННЫЕ ТЕХНОЛОГИИ</h2>
+            <p class="modern-text">Мы внедряем передовые технологии, чтобы сделать процесс обучения не только полезным, но и выгодным для студентов.</p>
+            <img class="iphone" src="{% static 'img/iPhone-mockup.png' %}" alt="">
+            <!-- <img class="modern-background" src="/img/modern-background.png" alt=""> -->
+            <div class="block-container">
+                <div class="rect-1">
+                    <div class="first-string">
+                        <img  src="{% static 'img/galka.svg' %}" alt="">
+                        <h2>ТОКЕНЫ, КАК МОТИВАЦИЯ</h2>
+                    </div>
+                    <div class="second-string">
+                        <p>На нашей платформе действует система токенов — виртуальной валюты, которая начисляется за публикацию статей, проектов, эссе или любых других работ.
+                            Каждое действие на платформе приносит тебе токены.</p>
+                    </div>
+                    
+                </div>
+                <div class="rect-2">
+                    <div class="first-string">
+                        <img src="{% static 'img/galka.svg' %}" alt="">
+                        <h2>ОБМЕН ТОКЕНОВ НА РЕАЛЬНЫЕ НАГРАДЫ</h2>
+                    </div>
+                    <div class="second-string">
+                        <p>Мы сотрудничаем с ведущими IT-компаниями, чтобы сделать твою активность ещё более ценной. Собранные токены можно обменять на: сувенирную продукцию, гаджеты и т.д.</p>
+                    </div>
+                </div>
+                <div class="rect-3">
+                    <div class="first-string">
+                        <img src="{% static 'img/galka.svg' %}" alt="">
+                        <h2>ПОЧЕМУ ЭТО КРУТО?</h2>
+                    </div>
+                    <div class="second-string">
+                        <p>Токены — это не только валюта, но и показатель твоего вклада в сообщество. Публикуй работы, получай токены, обменивай их на реальные призы. Знания превращаются в реальную ценность, мотивируя тебя учиться и делиться.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="about">
+                <h2>ITMM</h2>
+                <p>Национальный исследовательский Нижегородский государственный университет имени Н. И. Лобачевского
+                     — крупнейшее высшее учебное заведение Нижнего Новгорода, один из национальных исследовательских университетов России.</p>
+            </div>
+            <div class="link">
+                <h2>Ссылки</h2>
+                <ul>
+                    <li><a href="#index">Спонсоры</a></li>
+                    <li><a href="#index">Токены</a></li>
+                    <li><a href="#index">Курсы</a></li>
+                    <li><a href="{% url 'personal_account'%}">Личный кабинет</a></li>
+                </ul>
+            </div>
+            <div class="news-letter">
+                <h2>Пожелания</h2>
+                <p>Подпишитесь на нашу рассылку, чтобы
+                    получать наши последние обновления</p>
+                <div class="email-send">
+                    <!-- <label for="" class="email-send__label"></label> -->
+                    <input type="email" id="email-input" name="email" placeholder="Введите свою почту:" class="email-send__input" required>
+                    <button type="submit" class="email-send__button">
+                        <img src="{% static 'img/send.svg' %}" alt="отправить">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>ITMM-EDUCATION</p>
+            <p> &copy Авторское право 2024. Все права защищены.</p>
+            <p>GitHub</p>
+        </div>
+    </footer>
+     <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

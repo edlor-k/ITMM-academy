@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">ITMM</h1>
+        
+        <div class="right-container">
+            <button class="main" onclick="window.location.href='/'">ГЛАВНАЯ</button>
+            <div class="user-info">
+                <span class="token-amount" id="current-token-amount">{{ tokens }}</span> 
+                <img class="token" src="{% static 'img/token.svg' %}" alt="Токен">
+            </div>
+            <div class="avatar-container">
+                <img src="{{ avatar_url }}" alt="Аватар" class="avatar"> <!-- URL аватара -->
+            </div>
+        </div>
+    </header>
+    <div class="personal-account">
+        <h2 class="name">
+            {% if request.user.first_name %}
+                {{ request.user.first_name }}, добрый день!
+            {% else %}
+                {{ request.user.username }}, добрый день!
+            {% endif %}
+        </h2> 
+        <p class="quote">Образование, которое приносит пользу!</p>
+        <button class="button" onclick="window.location.href='/'">Начать</button>
+    </div>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

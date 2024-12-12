@@ -1,0 +1,184 @@
+:root {
+    --black: #171717;
+    --white: #F9F9FF;
+    --green: #04FF95;
+    --blue: #020BDF;
+    --text-font-family: "Montserrat", sans-serif;
+    --text-font-weight-black: 900;
+    --text-font-weight-bold: 700;
+    --text-font-weight-semibold: 600;
+    --text-font-weight-medium: 500;
+    --text-font-weight-regular: 400;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--black);
+    font-family: var(--text-font-family);
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.background-effects {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; 
+    margin-top: -20px;
+    pointer-events: none;
+}
+
+.background-effect {
+    width: 100%;
+    height: 100%; 
+    
+}
+
+.div-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 500px;
+    height: 606px;
+    background-color: var(--white);
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-text {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-text h1 {
+    font-family: var(--text-font-family);
+    font-size: 48px;
+    font-weight: var(--text-font-weight-black);
+    color: var(--blue);
+    margin: 0;
+}
+
+.form-text p {
+    font-family: var(--text-font-family);
+    font-size: 24px;
+    font-weight: var(--text-font-weight-medium);
+    line-height: 42px;
+    color: var(--black);
+    margin: 0;
+}
+
+.input-container {
+    position: relative;
+    width: 439px;
+    height: 60px;
+    margin-top: 50px;
+}
+
+
+input {
+    font-family: var(--text-font-family);
+    font-size: 16px;
+    font-weight: var(--text-font-weight-regular);
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--blue);
+    padding-left: 20px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.placeholder-text, .placeholder-pass {
+    font-family: var(--text-font-family);
+    font-size: 16px;
+    font-weight: var(--text-font-weight-regular);
+    color: #747474;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+
+
+button.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--blue);
+    transition: color 0.3s;
+}
+
+button.toggle-password:hover {
+    color: #000;
+}
+
+button.toggle-password:focus {
+    outline: none;
+}
+
+input[type="password"]:focus + button.toggle-password,
+input[type="text"]:focus + button.toggle-password {
+    color: var(--blue);
+}
+
+
+/* Кнопка */
+.button {
+    margin-top: 50px;
+    width: 445px;
+    height: 77px;
+    background-color: var(--blue);
+    font-family: var(--text-font-family);
+    font-size: 24px;
+    font-weight: var(--text-font-weight-regular);
+    line-height: 42px;
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.button[disabled] {
+    background-color: #747474;
+}
+
+.button:not([disabled]):hover {
+    opacity: 1;
+}
+
+.forgot-password {
+    text-decoration: none;
+    font-family: var(--text-font-family);
+    font-size: 20px;
+    font-weight: var(--text-font-weight-regular);
+    line-height: 42px;
+    color: var(--blue);
+    display: flex;
+    margin-right: 0px;
+    margin-top: 10px;
+    justify-content: end;
+}
